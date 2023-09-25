@@ -13,7 +13,7 @@ public class Aloe {
         Dotenv dotenv = Dotenv.load();
         final String Token = dotenv.get("BOT_TOKEN");
         JDA jda = JDABuilder.createDefault(Token)
-                .addEventListeners(new HangmanCommand())
+                .addEventListeners(new HangmanCommand(channel, member.getUser()))
                 .build().awaitReady();
         CommandListUpdateAction commands = jda.updateCommands();
         commands.addCommands(
